@@ -12,6 +12,13 @@ const signin = require("./controllers/signin");
 const signup = require("./controllers/signup");
 const Schema = require("./models/user");
 const userdata = require("./controllers/userdata");
+const qrSchema = require("./models/qrcode");
+const cdutySchema = require("./models/cduty");
+const updateProfile = require("./controllers/updateuser");
+const newQR = require("./controllers/addqrcode");
+const newItem = require("./controllers/addcustomduty");
+const getQRlist = require("./controllers/qrcodelist");
+const getCdutylist = require("./controllers/customdutylist");
 
 const app = express();
 app.use(bodyParser.json());
@@ -31,6 +38,8 @@ Schema.plugin(passport_mongoose);
 app.use(passport.initialize());
 app.use(passport.session());
 const User = mongoose.model("User", Schema);
+const QRcode = mongoose.model("QRcode", qrSchema);
+const Cduty = mongoose.model("Cduty", cdutySchema);
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -44,6 +53,11 @@ app.get('/', (req, resp) => { resp.send('working ') })
 app.post('/api/signin', (req, resp) => { signin.handlesignin(req, resp, User) })
 app.post('/api/signup', (req, resp) => { signup.handlesignup(req, resp, User) })
 app.post('/api/userdata', (req, resp) => { userdata.userdata(req, resp, User) })
+app.post('/api/addqrCode', (req, resp) => { newQR.newQR(req, resp, QRcode) })
+app.post('/api/addcdutyitem', (req, resp) => { newItem.newItem(req, resp, Cduty) })
+app.post('/api/update_profile', (req, resp) => { updateProfile.updateProfile(req, resp, User) })
+app.get('/api/get_qrcodes', (req, resp) => { getQRlist.getQRlist(req, resp, QRcode) })
+app.get('/api/get_cduty', (req, resp) => { getCdutylist.getCdutylist(req, resp, Cduty) })
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
