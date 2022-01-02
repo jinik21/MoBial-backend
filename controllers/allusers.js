@@ -1,6 +1,6 @@
 const getUsers = async (req, resp,User) => {
 
-    const usr = await User.find({}).sort({ 'name': 1 });
+    const usr = await User.find({});
 
     return resp.json(usr);
     
