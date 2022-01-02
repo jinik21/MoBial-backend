@@ -19,6 +19,7 @@ const newQR = require("./controllers/addqrcode");
 const newItem = require("./controllers/addcustomduty");
 const getQRlist = require("./controllers/qrcodelist");
 const getCdutylist = require("./controllers/customdutylist");
+const scannedQRcode = require("./controllers/qrscanned");
 
 const app = express();
 app.use(bodyParser.json());
@@ -56,6 +57,7 @@ app.post('/api/userdata', (req, resp) => { userdata.userdata(req, resp, User) })
 app.post('/api/addqrCode', (req, resp) => { newQR.newQR(req, resp, QRcode) })
 app.post('/api/addcdutyitem', (req, resp) => { newItem.newItem(req, resp, Cduty) })
 app.post('/api/update_profile', (req, resp) => { updateProfile.updateProfile(req, resp, User) })
+app.post('/api/scan_qrcode', (req, resp) => { scannedQRcode.scannedQRcode(req, resp, User,QRcode) })
 app.get('/api/get_qrcodes', (req, resp) => { getQRlist.getQRlist(req, resp, QRcode) })
 app.get('/api/get_cduty', (req, resp) => { getCdutylist.getCdutylist(req, resp, Cduty) })
 
