@@ -23,7 +23,7 @@ const getCdutylist = require("./controllers/customdutylist");
 const scannedQRcode = require("./controllers/qrscanned");
 const scannedCduty=require("./controllers/customduty");
 const getFlightInfo=require("./controllers/flightinfo");
-
+const getUsers=require("./controllers/allusers");
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
@@ -65,7 +65,7 @@ app.get('/api/get_qrcodes', (req, resp) => { getQRlist.getQRlist(req, resp, QRco
 app.get('/api/get_cduty', (req, resp) => { getCdutylist.getCdutylist(req, resp, Cduty) })
 app.post('/api/scan_cduty', (req, resp) => { scannedCduty.scannedCduty(req, resp,Cduty) })
 app.post('/api/flight_info', (req, resp) => { getFlightInfo.getFlightInfo(req, resp,avaitionstack.accesskey) })
-
+app.get('/api/users', (req, resp) => { getUsers.getUsers(req, resp, User) })
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
