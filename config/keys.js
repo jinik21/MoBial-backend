@@ -6,5 +6,11 @@ module.exports = {
   },
   avaitionstack:{
     accesskey:"3cd7688f995776d0664eedb1ea966c95"
+  },
+  azure:{
+    cvapi:{
+      key:"f9439f132acc4c3abf31a7fe678bbaa3",
+      endpoint:"https://mobial.cognitiveservices.azure.com/"
+    }
   }
 };

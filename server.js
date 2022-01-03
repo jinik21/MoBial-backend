@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 const db = require("./config/keys").mongodb.mongoURI;
 const firebase = require("./config/keys").firebase;
 const avaitionstack = require("./config/keys").avaitionstack;
+const azure_cv = require("./config/keys").azure.cvapi;
 const axios = require('axios');
 const signin = require("./controllers/signin");
 const signup = require("./controllers/signup");
@@ -63,7 +64,7 @@ app.post('/api/update_profile', (req, resp) => { updateProfile.updateProfile(req
 app.post('/api/scan_qrcode', (req, resp) => { scannedQRcode.scannedQRcode(req, resp, User,QRcode) })
 app.get('/api/get_qrcodes', (req, resp) => { getQRlist.getQRlist(req, resp, QRcode) })
 app.get('/api/get_cduty', (req, resp) => { getCdutylist.getCdutylist(req, resp, Cduty) })
-app.post('/api/scan_cduty', (req, resp) => { scannedCduty.scannedCduty(req, resp,Cduty) })
+app.post('/api/scan_cduty', (req, resp) => { scannedCduty.scannedCduty(req, resp,Cduty,azure_cv) })
 app.post('/api/flight_info', (req, resp) => { getFlightInfo.getFlightInfo(req, resp,avaitionstack.accesskey) })
 app.get('/api/users', (req, resp) => { getUsers.getUsers(req, resp, User) })
 
