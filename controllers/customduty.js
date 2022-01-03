@@ -31,7 +31,7 @@ const scannedCduty = async (req, resp, Cduty, azure_cv) => {
         });
         const itm = await Cduty.find({ 'name': it });
             console.log(itm)
-            if (itm != null) {
+            if (itm.length != 0) {
                 chk = 1;
             }
         console.log("hello")
