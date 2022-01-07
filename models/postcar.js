@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const postCar = new Schema({
-    renter_email: {
+    rentee_email: {
         type: String,
         required: true
     },
