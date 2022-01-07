@@ -3,10 +3,10 @@ const { v4: uuidv4 } = require('uuid');
 const translate = async (req, resp, azure_translate) => {
     var endpoint = azure_translate.endpoint
 
-    var messages=req.body.messages
-    var arr=[]
+    var messages = req.body.messages
+    var arr = []
     messages.forEach(function (item) {
-        var obj={'text':item['text']}
+        var obj = { 'text': item['text'] }
         arr.push(obj)
     })
     var options = {
@@ -21,10 +21,9 @@ const translate = async (req, resp, azure_translate) => {
         },
         params: {
             'api-version': '3.0',
-            // 'from': req.body.from_lang,
             'to': req.body.to_lang
         },
-        data:arr,
+        data: arr,
         responseType: 'json'
     };
     var data;
@@ -36,12 +35,9 @@ const translate = async (req, resp, azure_translate) => {
             return resp.json("error")
         });
         let len = messages.length;
-        for(var i=0;i<len;i++)
-        {
-            // console.log(data[i])
-            messages[i]['text']=data[i]['translations'][0]['text']
+        for (var i = 0; i < len; i++) {
+            messages[i]['text'] = data[i]['translations'][0]['text']
         }
-        // console.log(messages)
         return resp.json(messages)
     }
     catch {

@@ -1,6 +1,6 @@
 const handlesignup = (req, resp, User) => {
-
-    User.register({ username: req.body.email, email: req.body.email, name: req.body.name, phone: req.body.phone }, req.body.password,
+    var pic = "https://mobial.blob.core.windows.net/mobialc/663328.png"
+    User.register({ username: req.body.email, email: req.body.email, name: req.body.name, phone: req.body.phone, dob: req.body.dob, picture: pic }, req.body.password,
         function (err, user) {
             if (err) {
                 console.log(err);

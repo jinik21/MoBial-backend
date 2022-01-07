@@ -34,8 +34,8 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  qrcodes:{
-    type:[{}]
+  qrcodes: {
+    type: [{}]
   }
 });
 module.exports = userSchema;
