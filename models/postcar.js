@@ -19,10 +19,10 @@ const postCar = new Schema({
         type: String,
     },
     from_date: {
-        type: Date
+        type: String
     },
     to_date: {
-        type: Date
+        type: String
     },
     car_rc: {
         type: String
