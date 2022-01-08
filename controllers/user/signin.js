@@ -1,4 +1,3 @@
-
 const handlesignin = (req, resp, User) => {
     const user = new User({
         username: req.body.email,

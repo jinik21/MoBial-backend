@@ -11,29 +11,51 @@ const avaitionstack = require("./config/keys").avaitionstack;
 const azure_cv = require("./config/keys").azure.cvapi;
 const azure_translate = require("./config/keys").azure.translateapi;
 const axios = require('axios');
-const signin = require("./controllers/signin");
-const signup = require("./controllers/signup");
+const signin = require("./controllers/user/signin");
+const signup = require("./controllers/user/signup");
 const Schema = require("./models/user");
-const userdata = require("./controllers/userdata");
+const userdata = require("./controllers/user/userdata");
 const qrSchema = require("./models/qrcode");
 const cdutySchema = require("./models/cduty");
 const rentSchema = require("./models/rentcar");
 const postSchema = require("./models/postcar");
-const updateProfile = require("./controllers/updateuser");
-const newQR = require("./controllers/addqrcode");
-const newItem = require("./controllers/addcustomduty");
-const getQRlist = require("./controllers/qrcodelist");
-const getCdutylist = require("./controllers/customdutylist");
-const scannedQRcode = require("./controllers/qrscanned");
-const scannedCduty = require("./controllers/customduty");
-const translate = require("./controllers/translate");
-const getFlightInfo = require("./controllers/flightinfo");
-const getUsers = require("./controllers/allusers");
-const rentCar=require("./controllers/rentcar")
-const postCar=require("./controllers/postcar")
-const getCar=require("./controllers/getcar")
-const getprevCar=require('./controllers/previousCar')
+const updateProfile = require("./controllers/user/updateuser");
+const newQR = require("./controllers/qrcode/addqrcode");
+const newItem = require("./controllers/customduty/addcustomduty");
+const getQRlist = require("./controllers/qrcode/qrcodelist");
+const getCdutylist = require("./controllers/customduty/customdutylist");
+const scannedQRcode = require("./controllers/qrcode/qrscanned");
+const scannedCduty = require("./controllers/customduty/customduty");
+const translate = require("./controllers/translate/translate");
+const getFlightInfo = require("./controllers/flightinfo/flightinfo");
+const getUsers = require("./controllers/user/allusers");
+const rentCar=require("./controllers/vehicle/rentcar")
+const postCar=require("./controllers/vehicle/postcar")
+const getCar=require("./controllers/vehicle/getcar")
+const getprevCar=require('./controllers/vehicle/previousCar')
+// const swaggerJsDoc = require("swagger-jsdoc");
+// const swaggerUi = require("swagger-ui-express");
 const app = express();
+
+// const swaggerOptions = {
+//   swaggerDefinition: {
+//     info: {
+//       version: "1.0.0",
+//       title: "MoBial API",
+//       description: "Moial API Information",
+//       contact: {
+//         name: "Nikheel Jain"
+//       },
+//       servers: ["http://localhost:3001"]
+//     }
+//   },
+//   // ['.routes/*.js']
+//   apis: ["./controllers/user/*.js","./controllers/customduty/*.js","./controllers/flightinfo/*.js","./controllers/qrcode/*.js","./controllers/translate/*.js","./controllers/vehicle/*.js","server.js"]
+// };
+
+// const swaggerDocs = swaggerJsDoc(swaggerOptions);
+// app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
 app.use(bodyParser.json());
 app.use(cors());
 app.use(
@@ -63,7 +85,6 @@ passport.deserializeUser(User.deserializeUser());
 app.get("/api/firebase", (req, res) => {
   return res.json(firebase)
 });
-//Routes
 app.get('/', (req, resp) => { resp.send('working ') })
 app.post('/api/signin', (req, resp) => { signin.handlesignin(req, resp, User) })
 app.post('/api/signup', (req, resp) => { signup.handlesignup(req, resp, User) })
