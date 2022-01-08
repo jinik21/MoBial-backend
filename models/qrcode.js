@@ -11,5 +11,8 @@ const rewardSchema = new Schema({
   reward: {
     type: Number
   },
+  picture:{
+    type:String
+  }
 });
 module.exports = rewardSchema;
