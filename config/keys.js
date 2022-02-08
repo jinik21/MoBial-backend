@@ -9,11 +9,11 @@ module.exports = {
   },
   azure: {
     cvapi: {
-      key: "f9439f132acc4c3abf31a7fe678bbaa3",
-      endpoint: "https://mobial.cognitiveservices.azure.com/"
+      key: "2f5c0c2469514e428f90afaea37ca430",
+      endpoint: "https://mobialcv.cognitiveservices.azure.com/"
     },
     translateapi: {
-      key: "74c21f12a85b4410a40f5e27811c970c",
+      key: "c5e32b9e32ab49098b1f8b882db7a2bb",
       location: "centralindia",
       endpoint: "https://api.cognitive.microsofttranslator.com/"
     }
